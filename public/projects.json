@@ -1,0 +1,71 @@
+[
+  {
+    "id": "0001",
+    "title": "Parcel Management",
+    "imageUrl": "https://i.ibb.co/m0zX8dq/Web-capture-12-12-2023-17927-parcelmanagment-web-app.jpg",
+    "description": "This is one of my finest creations—a restaurant site boasting incredible functionality and UI/UX. Utilized CRUD, JWT, and various features for an exceptional user experience.",
+    "features": [
+      "In this site, we have 3 types of dashboards",
+      "All dashboards have unique routes",
+      "Dynamically user, all delivery man, total book are all dynamic",
+      "Users can book a parcel",
+      "Users can delete, update a parcel"
+    ],
+    "liveLink": "https://parcelmanagment.web.app",
+    "codeLink": "https://github.com/KhaledAhmed2004/parcel-management-client",
+    "technologies": [
+      "React",
+      "Firebase Authentication",
+      "JWT",
+      "MongoDB",
+      "Node.js",
+      "Express"
+    ]
+  },
+  {
+    "id": "0002",
+    "title": "Khala-Pina-Restaurant",
+    "imageUrl": "https://i.ibb.co/4sH6C3x/Web-capture-12-12-2023-171010-resturent-c129f-web-app.jpg",
+    "description": "This is my latest project—a full-stack parcel management website. I developed CRUD operations and integrated various functionalities for a seamless user experience.",
+    "features": [
+      "This site is fully responsive",
+      "This site has dark mode toggle",
+      "Has an awesome hover effect on the card",
+      "Has email and Gmail auth system",
+      "Has CRUD operations"
+    ],
+    "liveLink": "https://resturent-c129f.web.app",
+    "codeLink": "https://github.com/KhaledAhmed2004/Khala-Pina-Restauran",
+    "technologies": [
+      "React",
+      "Firebase Authentication",
+      "Tailwind CSS",
+      "Node.js",
+      "MongoDB",
+      "Express"
+    ]
+  },
+  {
+    "id": "0003",
+    "title": "Tech Brand Website",
+    "imageUrl": "https://i.ibb.co/S3Jj07W/Web-capture-12-12-2023-171036-technology-and-electroni-ebb95-web-app.jpg",
+    "description": "I've developed a tech brand website, implementing essential CRUD operations for a seamless user experience in this project.",
+    "features": [
+      "It has scrolling animation",
+      "It has hover animation",
+      "Email/Gmail 2 auth systems are implemented in this",
+      "Full website data is from MongoDB",
+      "It shows a profile after login"
+    ],
+    "liveLink": "https://technology-and-electroni-ebb95.web.app",
+    "codeLink": "https://github.com/KhaledAhmed2004/techHub",
+    "technologies": [
+      "React",
+      "Firebase Authentication",
+      "MongoDB",
+      "Node.js",
+      "Express",
+      "Tailwind CSS"
+    ]
+  }
+]
