@@ -2,9 +2,15 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between sticky top-0 z-50 bg-transparent backdrop-blur-[10px]">
-      <h2 className="font-neue-machina text-2xl">Khaled Ahmed Nayeem</h2>
-      <ul className="flex gap-5 text-2xl">
+    <div className="flex font-neue-machina justify-between sticky top-0 z-50 bg-transparent backdrop-blur-[10px] p-5">
+      <h2
+        className="text-xl font-semibold tracking-[0.08em]
+      "
+      >
+        Khaled Ahmed Nayeem
+      </h2>
+
+      <ul className="flex gap-8 text-xl">
         <li>Home</li>
         <li>skills</li>
         <li>projects</li>

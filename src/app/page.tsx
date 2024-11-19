@@ -1,4 +1,5 @@
 "use client";
+import ContactMe from "@/components/modules/ContactMe";
 import FeaturedProjects from "@/components/modules/FeaturedProjects";
 import Hero from "@/components/modules/Hero";
 import Navbar from "@/components/modules/Navbar";
@@ -19,12 +20,13 @@ export default function Home() {
     requestAnimationFrame(raf);
   });
   return (
-    <div 
+    <div
     // className="scroll-smooth"
     >
       <Navbar />
       <Hero />
       <FeaturedProjects />
+      <ContactMe />
       <div className="h-[800px] bg-green-200">hi</div>
     </div>
   );
