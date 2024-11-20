@@ -1,4 +1,5 @@
 "use client";
+import Blog from "@/components/modules/Blog";
 import ContactMe from "@/components/modules/ContactMe";
 import FeaturedProjects from "@/components/modules/FeaturedProjects";
 import Footer from "@/components/modules/Footer";
@@ -28,6 +29,7 @@ export default function Home() {
       <MySliked />
       <FeaturedProjects />
       <ContactMe />
+      <Blog />
       <Footer />
     </div>
   );
