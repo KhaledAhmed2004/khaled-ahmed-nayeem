@@ -1,6 +1,7 @@
 "use client";
 import ContactMe from "@/components/modules/ContactMe";
 import FeaturedProjects from "@/components/modules/FeaturedProjects";
+import Footer from "@/components/modules/Footer";
 import Hero from "@/components/modules/Hero";
 import MySliked from "@/components/modules/MySliked";
 import Navbar from "@/components/modules/Navbar";
@@ -27,6 +28,7 @@ export default function Home() {
       <MySliked />
       <FeaturedProjects />
       <ContactMe />
+      <Footer />
     </div>
   );
 }
