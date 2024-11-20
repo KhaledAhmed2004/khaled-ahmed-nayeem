@@ -2,6 +2,7 @@
 import ContactMe from "@/components/modules/ContactMe";
 import FeaturedProjects from "@/components/modules/FeaturedProjects";
 import Hero from "@/components/modules/Hero";
+import MySliked from "@/components/modules/MySliked";
 import Navbar from "@/components/modules/Navbar";
 import Lenis from "lenis";
 import { useEffect } from "react";
@@ -20,14 +21,12 @@ export default function Home() {
     requestAnimationFrame(raf);
   });
   return (
-    <div
-    // className="scroll-smooth"
-    >
+    <div>
       <Navbar />
       <Hero />
+      <MySliked />
       <FeaturedProjects />
       <ContactMe />
-      <div className="h-[800px] bg-green-200">hi</div>
     </div>
   );
 }
