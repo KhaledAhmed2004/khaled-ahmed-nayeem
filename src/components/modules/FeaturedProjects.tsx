@@ -112,7 +112,6 @@
 
 // export default FeaturedProjects;
 
-
 // "use client";
 // import Image from "next/image";
 // import Link from "next/link";
@@ -247,8 +246,6 @@
 
 // export default FeaturedProjects;
 
-
-
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import ProjectCard from "./ProjectCard";
@@ -281,7 +278,7 @@ const FeaturedProjects = () => {
   });
 
   return (
-    <div ref={conatiner}>
+    <div ref={conatiner} className="max-w-7xl mx-auto">
       <div className="grid items-center justify-center text-center">
         <h3 className="text-xl font-semibold text-gray-600">
           Real-World Results
