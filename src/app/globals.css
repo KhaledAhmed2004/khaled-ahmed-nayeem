@@ -6,3 +6,15 @@
   font-family: Neue Machina;
   src: url("./fonts/NeueMachina.ttf");
 }
+
+.custom-dot::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 13px;
+  width: 24px;
+  height: 2px;
+  background-color: transparent;
+  border-top: 1px dashed #d1d5db; /* Creates a dashed line */
+  transform: translateY(-50%); /* Center it vertically */
+}

@@ -1,4 +1,5 @@
 "use client";
+import AboutMe from "@/components/modules/AboutMe";
 import Blog from "@/components/modules/Blog";
 import ContactMe from "@/components/modules/ContactMe";
 import FeaturedProjects from "@/components/modules/FeaturedProjects";
@@ -26,10 +27,11 @@ export default function Home() {
     <div>
       <Navbar />
       <Hero />
-      <MySliked />
-      <FeaturedProjects />
+      {/* <MySliked /> */}
+      {/* <FeaturedProjects /> */}
       <ContactMe />
       <Blog />
+      <AboutMe />
       <Footer />
     </div>
   );
