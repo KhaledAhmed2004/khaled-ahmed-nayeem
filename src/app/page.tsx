@@ -26,13 +26,13 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <Hero />
+      {/* <Hero />
       <MySliked />
       <FeaturedProjects />
       <ContactMe />
       <Blog />
       <AboutMe />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }

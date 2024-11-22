@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { FiLock, FiMail } from "react-icons/fi";
 import { GoShieldLock } from "react-icons/go";
 
@@ -12,11 +12,11 @@ interface IFormInput {
 const Login: React.FC = () => {
   const {
     register,
-    handleSubmit,
+    // handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {};
+  // const onSubmit: SubmitHandler<IFormInput> = (data) => {};
 
   return (
     <section className="flex items-center justify-center min-h-screen py-8 lg:py-10 bg-white">
@@ -31,7 +31,10 @@ const Login: React.FC = () => {
         <p className="text-center text-sm text-gray-600 mb-6">
           Please sign in to access your dashboard 😎
         </p>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form
+          // onSubmit={handleSubmit(onSubmit)}
+          className="space-y-6"
+        >
           {/* Email Field */}
           <div>
             <label className="block text-sm font-semibold mb-2 text-gray-700">

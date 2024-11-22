@@ -52,7 +52,7 @@ const Hero = () => {
           <div className="flex flex-col justify-center items-center text-center md:text-left gap-8 md:gap-8 md:w-1/2">
             <div className="space-y-3">
               <h1 className="text-4xl font-jetBrains-Mono font-bold text-gray-900">
-                Hey! I'm Khaled Ahmed
+                Hey! I&apos;m Khaled Ahmed
               </h1>
               <div className="w-full overflow-hidden text-left font-jetBrains-Mono">
                 ----------
@@ -74,7 +74,7 @@ const Hero = () => {
 
             <p className="text-xl text-center text-gray-600 max-w-md mx-auto md:mx-0">
               {/* <p className="text-xl text-center text-gray-600 max-w-xl mx-auto md:mx-0"> */}
-              I build web & mobile apps! I'm a software developer based in
+              I build web & mobile apps! I&apos;m a software developer based in
               Bangladesh, specializing in cutting-edge web and mobile
               technologies as well as pixel-perfect designs.
             </p>

@@ -190,7 +190,7 @@ const AboutMe = () => {
 
           {/* <h3 className="text-2xl font-semibold text-gray-800"> */}
           <h3 className="text-3xl font-bold text-gray-800 mb-2">
-            Hi, I'm Khaled Ahmed Nayeem
+            Hi, I&apos;m Khaled Ahmed Nayeem
           </h3>
           <p className="mt-4 text-gray-600 text-center lg:text-left leading-relaxed">
             I’m a passionate developer specializing in building responsive,
