@@ -14,6 +14,7 @@ export default {
       },
       fontFamily: {
         "neue-machina": ["Neue Machina", "sans-serif"],
+        "jetBrains-Mono": ["JetBrains Mono", "monospace"],
       },
     },
   },

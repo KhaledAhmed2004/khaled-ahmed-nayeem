@@ -1,3 +1,5 @@
+//This is if add any exprinece
+
 // import React from "react";
 // import { GoMortarBoard } from "react-icons/go";
 // import { Typewriter } from "react-simple-typewriter";
@@ -124,6 +126,8 @@
 
 // export default AboutMe;
 
+//This is witout exprience
+import Image from "next/image";
 import React from "react";
 import { GoMortarBoard } from "react-icons/go";
 import { Typewriter } from "react-simple-typewriter";
@@ -162,7 +166,9 @@ const AboutMe = () => {
         <div className="flex flex-col items-center lg:items-start w-full lg:w-3/5">
           {/* Profile Image and Typewriter */}
           <div className="relative mb-8">
-            <img
+            <Image
+              width={500}
+              height={500}
               src="https://i.ibb.co/PwJ6Ftf/1704652255283.jpg"
               alt="Your Name"
               className="w-64 h-64 object-cover rounded-full mx-auto shadow-lg border-4 border-gray-200"

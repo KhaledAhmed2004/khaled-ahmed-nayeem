@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,6 +17,8 @@
   width: 24px;
   height: 2px;
   background-color: transparent;
-  border-top: 1px dashed #d1d5db; /* Creates a dashed line */
-  transform: translateY(-50%); /* Center it vertically */
+  border-top: 1px dashed #d1d5db;
+  /* Creates a dashed line */
+  transform: translateY(-50%);
+  /* Center it vertically */
 }

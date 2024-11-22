@@ -27,8 +27,8 @@ export default function Home() {
     <div>
       <Navbar />
       <Hero />
-      {/* <MySliked /> */}
-      {/* <FeaturedProjects /> */}
+      <MySliked />
+      <FeaturedProjects />
       <ContactMe />
       <Blog />
       <AboutMe />
