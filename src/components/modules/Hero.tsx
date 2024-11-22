@@ -24,7 +24,7 @@ const Hero = () => {
           className="flex flex-col md:flex-row justify-center items-center py-12 px-6 space-y-12 md:space-y-0 h-screen"
         >
           {/* Left Section (Social Icons with Hover Text) */}
-          <div className="absolute top-1/2 left-0 transform -translate-y-1/2 flex flex-col items-center gap-4 md:gap-8">
+          <div className="absolute top-1/2 left-10 xl:left-4 transform -translate-y-1/2 md:flex flex-col items-center gap-4 md:gap-8 hidden">
             {[
               { icon: <FaInstagram />, label: "Instagram" },
               { icon: <FaLinkedin />, label: "LinkedIn" },
@@ -102,7 +102,7 @@ const Hero = () => {
                   duration: 0.5, // Opacity animation duration
                 },
               }}
-              className="absolute top-[35%] left-[80%] bg-gradient-to-r from-blue-500 to-purple-600 text-white flex items-center gap-2 py-3 px-6 rounded-3xl shadow-2xl text-xl font-semibold font-neue-machina"
+              className="hidden absolute top-[35%] right-10 bg-gradient-to-r from-blue-500 to-purple-600 text-white md:flex items-center gap-2 py-3 px-6 rounded-3xl shadow-2xl text-xl font-semibold font-neue-machina"
             >
               Say Hello
               <motion.span
@@ -125,24 +125,88 @@ const Hero = () => {
               </motion.span>
             </motion.button>
 
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{
+                opacity: 1,
+                y: [0, -10, 0],
+              }}
+              whileHover={{
+                scale: 1.1,
+                boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{
+                y: {
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  ease: "easeInOut",
+                },
+                opacity: {
+                  duration: 0.5,
+                },
+              }}
+              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white flex items-center gap-2 py-3 px-6 rounded-3xl shadow-2xl text-base sm:text-xl font-semibold md:hidden"
+            >
+              Say Hello
+              <motion.span
+                animate={{
+                  rotate: [0, 8, -8, 8, -8, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                }}
+                className="inline-block"
+              >
+                <span className="text-3xl">👋</span>
+              </motion.span>
+            </motion.button>
+
             {/* Action Buttons */}
             <div className="flex gap-4 justify-center md:justify-start font-semibold">
               <div className="flex">
                 {/* Resume Buttons */}
                 <div className="flex gap-2 items-center text-purple-600 hover:text-white border border-purple-600 py-2 px-6 rounded-l-full hover:bg-purple-600 border-r-0 transition-all">
                   <GoDownload />
-                  <Link href="#">GET RESUME</Link>
+                  <Link href="#" className="text-sm sm:text-base">
+                    GET RESUME
+                  </Link>
                 </div>
 
                 <div className="flex gap-2 items-center text-purple-600 hover:text-white border border-purple-600 py-2 px-6 rounded-r-full hover:bg-purple-600 transition-all">
                   <IoEye />
-                  <Link href="#">VIEW RESUME</Link>
+                  <Link href="#" className="text-sm sm:text-base">
+                    VIEW RESUME
+                  </Link>
                 </div>
               </div>
             </div>
-
+            <div className="transform -translate-y-1/2  flex items-center gap-4 md:gap-8 ">
+              {[
+                { icon: <FaInstagram /> },
+                { icon: <FaLinkedin /> },
+                { icon: <FaGithub /> },
+                { icon: <LuPhone /> },
+              ].map(({ icon, index }) => (
+                <div
+                  key={index}
+                  className="relative group overflow-visible transition-all duration-300 transform hover:scale-110 hover:text-blue-500 md:hidden"
+                >
+                  <Link
+                    href="#"
+                    className="text-gray-600 text-3xl group-hover:text-black transition-all"
+                  >
+                    {icon}
+                  </Link>
+                </div>
+              ))}
+            </div>
             {/* Scroll Down Button */}
-            <button className="flex items-center gap-2 group">
+            {/* <button className="flex items-center gap-2 group"> */}
+            <button className="flex items-center gap-2 group transform -translate-y-1/2">
               <div className="h-10 w-6 border-2 rounded-full relative">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-[2px] h-[12px] bg-blue-600 rounded-lg animate-bounce"></div>
