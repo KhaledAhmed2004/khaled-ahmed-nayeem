@@ -190,7 +190,7 @@ const Hero = () => {
                 { icon: <FaLinkedin /> },
                 { icon: <FaGithub /> },
                 { icon: <LuPhone /> },
-              ].map(({ icon, index }) => (
+              ].map(({ icon }, index) => (
                 <div
                   key={index}
                   className="relative group overflow-visible transition-all duration-300 transform hover:scale-110 hover:text-blue-500 md:hidden"

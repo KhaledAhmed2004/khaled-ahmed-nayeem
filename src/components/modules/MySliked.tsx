@@ -1,126 +1,3 @@
-// import React from "react";
-// import {
-//   FaHtml5,
-//   FaCss3Alt,
-//   FaJs,
-//   FaReact,
-//   FaNodeJs,
-//   FaGit,
-//   FaGithub,
-// } from "react-icons/fa";
-// import {
-//   SiTailwindcss,
-//   SiExpress,
-//   SiMongodb,
-//   SiRedux,
-//   SiNextdotjs,
-//   SiTypescript,
-//   SiZod,
-// } from "react-icons/si";
-
-// // List of skills with their respective icons and descriptions
-// const skills = [
-//   { id: 1, name: "HTML", icon: <FaHtml5 />, details: "Markup language" },
-//   { id: 2, name: "CSS", icon: <FaCss3Alt />, details: "Styling language" },
-//   {
-//     id: 3,
-//     name: "JavaScript",
-//     icon: <FaJs />,
-//     details: "Programming language",
-//   },
-//   { id: 4, name: "React", icon: <FaReact />, details: "JavaScript library" },
-//   {
-//     id: 5,
-//     name: "Tailwind CSS",
-//     icon: <SiTailwindcss />,
-//     details: "CSS framework",
-//   },
-//   {
-//     id: 7,
-//     name: "Express.js",
-//     icon: <SiExpress />,
-//     details: "Node.js framework",
-//   },
-//   { id: 8, name: "Node.js", icon: <FaNodeJs />, details: "JavaScript runtime" },
-//   { id: 9, name: "MongoDB", icon: <SiMongodb />, details: "NoSQL database" },
-//   {
-//     id: 10,
-//     name: "Mongoose",
-//     icon: <SiMongodb />,
-//     details: "MongoDB ODM library",
-//   },
-//   { id: 11, name: "Git", icon: <FaGit />, details: "Version control system" },
-//   {
-//     id: 12,
-//     name: "GitHub",
-//     icon: <FaGithub />,
-//     details: "Version control platform",
-//   },
-//   { id: 13, name: "Zod", icon: <SiZod />, details: "Validation library" },
-//   {
-//     id: 14,
-//     name: "TypeScript",
-//     icon: <SiTypescript />,
-//     details: "JavaScript superset",
-//   },
-//   {
-//     id: 15,
-//     name: "Redux",
-//     icon: <SiRedux />,
-//     details: "State management library",
-//   },
-//   {
-//     id: 16,
-//     name: "Next.js",
-//     icon: <SiNextdotjs />,
-//     details: "React framework",
-//   },
-// ];
-
-// const SkillsList = () => {
-//   return (
-//     <div className="py-8">
-//       <h2 className="text-3xl font-bold text-gray-800 text-center">
-//         My Skills
-//       </h2>
-//       <p className="text-center text-gray-600 mt-4">
-//         Here are the technologies I specialize in:
-//       </p>
-//       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-//         {skills.map((skill) => (
-//           <div
-//             key={skill.id}
-//             className="transform transition-all duration-300 ease-in-out hover:shadow-md p-6 bg-gray-50 rounded-xl shadow-sm flex items-center justify-between border border-gray-100"
-//           >
-//             <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full text-white text-3xl">
-//               {skill.icon}
-//             </div>
-//             <div className="ml-4">
-//               <h3 className="text-xl font-semibold text-gray-800">
-//                 {skill.name}
-//               </h3>
-//               <p className="text-sm text-gray-600 mt-1">{skill.details}</p>
-//               <div className="flex items-center mt-2">
-//                 {/* Skill level bar */}
-//                 <div className="flex space-x-0.5" title="Mid-level">
-//                   <div className="h-1.5 w-4 bg-violet-400 rounded-l" />
-//                   <div className="h-1.5 w-4 bg-violet-400" />
-//                   <div className="h-1.5 w-4 bg-violet-400" />
-//                   <div className="h-1.5 w-4 bg-violet-400" />
-//                   <div className="h-1.5 w-4 bg-stone-300 dark:bg-stone-700" />
-//                   <div className="h-1.5 w-4 bg-stone-300 dark:bg-stone-700 rounded-r" />
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default SkillsList;
-
 import React from "react";
 import {
   FaHtml5,
@@ -141,7 +18,6 @@ import {
   SiZod,
 } from "react-icons/si";
 
-// List of skills with their respective icons, descriptions, and levels
 const skills = [
   {
     id: 1,
@@ -201,48 +77,41 @@ const skills = [
   },
   {
     id: 10,
-    name: "Mongoose",
-    icon: <SiMongodb />,
-    details: "MongoDB ODM library",
-    level: "intermediate",
-  },
-  {
-    id: 11,
     name: "Git",
     icon: <FaGit />,
     details: "Version control system",
     level: "expert",
   },
   {
-    id: 12,
+    id: 11,
     name: "GitHub",
     icon: <FaGithub />,
     details: "Version control platform",
     level: "expert",
   },
   {
-    id: 13,
+    id: 12,
     name: "Zod",
     icon: <SiZod />,
     details: "Validation library",
     level: "intermediate",
   },
   {
-    id: 14,
+    id: 13,
     name: "TypeScript",
     icon: <SiTypescript />,
     details: "JavaScript superset",
     level: "advanced",
   },
   {
-    id: 15,
+    id: 14,
     name: "Redux",
     icon: <SiRedux />,
     details: "State management library",
     level: "advanced",
   },
   {
-    id: 16,
+    id: 15,
     name: "Next.js",
     icon: <SiNextdotjs />,
     details: "React framework",
@@ -250,7 +119,6 @@ const skills = [
   },
 ];
 
-// Map expertise levels to progress bar widths
 const getSkillLevelWidth = (level: string) => {
   switch (level) {
     case "beginner":
@@ -268,47 +136,56 @@ const getSkillLevelWidth = (level: string) => {
 
 const SkillsList = () => {
   return (
-    <div className="py-8">
-      <h2 className="text-3xl font-bold text-gray-800 text-center">
+    <div className="py-12 dark:bg-gray-900">
+      <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100 text-center">
         My Skills
       </h2>
-      <p className="text-center text-gray-600 mt-4">
-        Here are the technologies I specialize in:
+      <p className="text-center text-gray-600 dark:text-gray-400 mt-4">
+        A collection of tools and technologies I excel in:
       </p>
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8 px-4 xl:px-0">
         {skills.map((skill) => (
           <div
             key={skill.id}
-            className="transform transition-all duration-300 ease-in-out hover:shadow-md p-6 bg-gray-50 rounded-xl shadow-sm flex items-center justify-between border border-gray-100"
+            className="relative group transform transition-transform duration-500 hover:scale-105 hover:shadow-xl rounded-xl shadow-sm p-4 bg-white dark:from-gray-800 dark:to-gray-900 border border-gray-200 dark:border-gray-700"
           >
-            <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full text-white text-3xl">
-              {skill.icon}
+            {/* Tooltip */}
+            <div className="absolute top-[-32px] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-800 dark:bg-gray-700 text-white text-xs font-medium rounded-lg px-3 py-1.5 shadow-lg">
+              {skill.level}!
             </div>
-            <div className="ml-4">
-              <h3 className="text-xl font-semibold text-gray-800">
-                {skill.name}
-              </h3>
-              <p className="text-sm text-gray-600 mt-1">{skill.details}</p>
-              <div className="flex items-center mt-2">
-                {/* Skill level bar */}
-                <div className="flex space-x-0.5" title={skill.level}>
-                  {[...Array(5)].map((_, index) => (
-                    <div
-                      key={index}
-                      className={`h-1.5 w-4 ${
-                        index < getSkillLevelWidth(skill.level)
-                          ? "bg-violet-400"
-                          : "bg-stone-300 dark:bg-stone-700"
-                      } ${
-                        index === 0
-                          ? "rounded-l"
-                          : index === 4
-                          ? "rounded-r"
-                          : ""
-                      }`}
-                    />
-                  ))}
-                </div>
+
+            {/* Icon and Details */}
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full text-white text-2xl shadow-lg">
+                {skill.icon}
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100">
+                  {skill.name}
+                </h3>
+                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                  {skill.details}
+                </p>
+              </div>
+            </div>
+
+            {/* Skill Level */}
+            <div className="mt-4 flex items-center justify-between">
+              <p className="text-gray-500 dark:text-gray-300 text-xs font-medium">
+                Expertise Level:
+              </p>
+              <div className="flex items-center space-x-1">
+                {[...Array(5)].map((_, index) => (
+                  <span
+                    key={index}
+                    className={`h-3 w-3 rounded-full ${
+                      index < getSkillLevelWidth(skill.level)
+                        ? "bg-violet-500"
+                        : "bg-gray-300 dark:bg-gray-600"
+                    }`}
+                    title={skill.level}
+                  />
+                ))}
               </div>
             </div>
           </div>
