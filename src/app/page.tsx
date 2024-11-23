@@ -29,7 +29,7 @@ export default function Home() {
       <Hero />
       <MySliked />
       {/* <FeaturedProjects /> */}
-      {/* <ContactMe /> */}
+      <ContactMe />
       {/* <Blog /> */}
       {/* <AboutMe /> */}
       {/* <Footer /> */}

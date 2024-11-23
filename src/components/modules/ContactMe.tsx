@@ -1,48 +1,98 @@
 import { FiMapPin } from "react-icons/fi";
 import { MdOutlineEmail } from "react-icons/md";
-import { FaLinkedin } from "react-icons/fa";
+import {
+  FaLinkedin,
+  FaFacebook,
+  FaInstagram,
+  FaGithub,
+  FaRegPaperPlane,
+} from "react-icons/fa";
+import { LuPhone } from "react-icons/lu";
 import Link from "next/link";
 
 const ContactMe = () => {
   return (
     <div
       id="Contact_me"
-      className="py-10 bg-gray-100 dark:bg-gray-900 rounded-lg shadow-lg"
+      className="py-10 dark:bg-gray-900 max-w-7xl mx-auto"
     >
-      <h2 className="my-8 text-3xl font-semibold text-center text-blue-600 dark:text-blue-400 underline underline-offset-8">
-        Contact Me
-      </h2>
-      <div className="flex flex-col lg:flex-row">
-        <div className="flex-1 px-5 md:px-16">
-          <h2 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-            Get in Touch
-          </h2>
-          <p className="mb-4 text-gray-600 dark:text-gray-400">
-            Have something to say? I’m here to help. Fill out the form or send
-            an email.
-          </p>
-          <p className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-            <FiMapPin className="text-2xl text-blue-600 dark:text-blue-400" />{" "}
-            Feni, Bangladesh
-          </p>
-          <p className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-            <MdOutlineEmail className="text-2xl text-blue-600 dark:text-blue-400" />
-            khaledahmednayeem2004@gmail.com
-          </p>
-          <Link
-            className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:underline"
-            href="https://www.linkedin.com/in/khaled-ahmed-nayeem-96596826a/"
-          >
-            <FaLinkedin className="text-2xl text-blue-600 dark:text-blue-400" />
-            Khaled Ahmed Nayeem
-          </Link>
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-semibold text-gray-800 dark:text-white">
+          Get in Touch
+        </h2>
+        <p className="text-lg text-gray-600 dark:text-gray-300 mt-2">
+          Let&apos;s Connect
+        </p>
+      </div>
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
+        {/* Left Side - Contact Info */}
+        <div className="flex-1 px-5 md:px-16 space-y-6">
+          <div className="flex gap-4 flex-wrap">
+            <div className="px-4 py-3 border border-dashed rounded-xl flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+              <FiMapPin className="text-3xl" />
+              <p className="text-gray-700 dark:text-gray-300">
+                Feni, Bangladesh
+              </p>
+            </div>
+            <div className="px-4 py-3 border border-dashed rounded-xl flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+              <LuPhone className="text-3xl" />
+              <p className="text-gray-700 dark:text-gray-300">
+                +880 1869653705
+              </p>
+            </div>
+            <div className="px-4 py-3 border border-dashed rounded-xl flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+              <MdOutlineEmail className="text-3xl" />
+              <p className="text-gray-700 dark:text-gray-300">
+                khaledahmednayeem2004@gmail.com
+              </p>
+            </div>
+            <div className="flex gap-4 flex-wrap">
+              {[
+                {
+                  icon: <FaInstagram />,
+                  link: "https://www.instagram.com/",
+                  label: "Instagram",
+                },
+                {
+                  icon: <FaLinkedin />,
+                  link: "https://www.linkedin.com/in/",
+                  label: "LinkedIn",
+                },
+                {
+                  icon: <FaGithub />,
+                  link: "https://www.github.com/",
+                  label: "Github",
+                },
+                {
+                  icon: <FaFacebook />,
+                  link: "https://www.facebook.com/",
+                  label: "Facebook",
+                },
+              ].map(({ icon, link, label }) => (
+                <div
+                  key={label}
+                  className="px-4 py-3 border border-dashed rounded-xl flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                >
+                  <Link
+                    href={link}
+                    className="text-gray-700 dark:text-gray-300 hover:underline flex items-center gap-2"
+                  >
+                    {icon}
+                    <span>{label}</span>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-        <form className="flex-1 mt-8 lg:mt-0 px-5 md:px-16">
-          <div className="mb-6">
-            <div className="mx-0 mb-4">
+
+        {/* Right Side - Contact Form */}
+        <form className="flex-1 px-5 md:px-16 space-y-6">
+          <div className="space-y-4">
+            <div>
               <label
                 htmlFor="name"
-                className="block pb-1 text-sm font-medium text-gray-600 dark:text-gray-300"
+                className="block text-sm font-medium text-gray-600 dark:text-gray-300"
               >
                 Name
               </label>
@@ -50,14 +100,13 @@ const ContactMe = () => {
                 type="text"
                 id="name"
                 placeholder="Your name"
-                className="w-full rounded-md shadow-md dark:focus:border-blue-600 dark:bg-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 outline-none py-2 px-3 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 transition duration-300"
-                name="name"
+                className="w-full rounded-xl border border-dashed dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 transition duration-300 py-2 px-3"
               />
             </div>
-            <div className="mx-0 mb-4">
+            <div>
               <label
                 htmlFor="email"
-                className="block pb-1 text-sm font-medium text-gray-600 dark:text-gray-300"
+                className="block text-sm font-medium text-gray-600 dark:text-gray-300"
               >
                 Email
               </label>
@@ -65,30 +114,31 @@ const ContactMe = () => {
                 type="email"
                 id="email"
                 placeholder="Your email address"
-                className="w-full rounded-md shadow-md dark:focus:border-blue-600 dark:bg-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 outline-none py-2 px-3 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 transition duration-300"
-                name="email"
+                className="w-full rounded-xl border border-dashed dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 transition duration-300 py-2 px-3"
               />
             </div>
-            <div className="mx-0 mb-4">
+            <div>
               <label
-                htmlFor="textarea"
-                className="block pb-1 text-sm font-medium text-gray-600 dark:text-gray-300"
+                htmlFor="message"
+                className="block text-sm font-medium text-gray-600 dark:text-gray-300"
               >
                 Message
               </label>
               <textarea
-                id="textarea"
+                id="message"
                 name="message"
-                cols={30}
                 rows={5}
                 placeholder="Write your message..."
-                className="w-full rounded-md shadow-md dark:focus:border-blue-600 dark:bg-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 outline-none py-2 px-3 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 transition duration-300"
+                className="w-full rounded-xl border border-dashed dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 transition duration-300 py-2 px-3"
               ></textarea>
             </div>
           </div>
-          <div className="text-center">
-            <button className="px-6 py-2.5 bg-blue-600 dark:bg-blue-700 text-white hover:bg-blue-500 dark:hover:bg-blue-600 rounded-lg shadow-lg transition duration-300 font-semibold">
-              Send Message
+          <div className="text-center mt-6">
+            <button
+              type="submit"
+              className="px-6 py-3 bg-blue-600 dark:bg-blue-700 text-white rounded-xl shadow-lg hover:bg-blue-500 dark:hover:bg-blue-600 transition duration-300 font-semibold flex items-center gap-2"
+            >
+              Send Message <FaRegPaperPlane />
             </button>
           </div>
         </form>
