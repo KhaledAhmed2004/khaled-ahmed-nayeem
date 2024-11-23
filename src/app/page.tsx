@@ -27,12 +27,12 @@ export default function Home() {
     <div>
       <Navbar />
       <Hero />
-      <MySliked />
+      {/* <MySliked /> */}
       {/* <FeaturedProjects /> */}
-      <ContactMe />
+      {/* <ContactMe /> */}
       {/* <Blog /> */}
-      <AboutMe />
-      {/* <Footer /> */}
+      {/* <AboutMe /> */}
+      <Footer />
     </div>
   );
 }
