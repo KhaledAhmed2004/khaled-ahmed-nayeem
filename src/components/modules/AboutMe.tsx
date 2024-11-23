@@ -1,4 +1,4 @@
-//This is if add any exprinece
+// //This is if add any exprinece
 
 // import React from "react";
 // import { GoMortarBoard } from "react-icons/go";
@@ -189,10 +189,12 @@ const AboutMe = () => {
           </div>
 
           {/* <h3 className="text-2xl font-semibold text-gray-800"> */}
-          <h3 className="text-3xl font-bold text-gray-800 mb-2">
+          {/* <h3 className="text-3xl font-bold text-gray-800 mb-2"> */}
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2 text-center lg:text-left">
             Hi, I&apos;m Khaled Ahmed Nayeem
           </h3>
-          <p className="mt-4 text-gray-600 text-center lg:text-left leading-relaxed">
+          {/* <p className="mt-4 text-gray-600 text-center lg:text-left leading-relaxed"> */}
+          <p className="mt-4 text-sm md:text-base text-gray-600 text-center lg:text-left leading-relaxed">
             I’m a passionate developer specializing in building responsive,
             user-friendly, and scalable applications. I focus on front-end
             frameworks like React and back-end technologies like Node.js and
@@ -203,7 +205,7 @@ const AboutMe = () => {
 
         {/* Education Timeline */}
         <div className="w-full lg:w-2/5 mt-12 lg:mt-0">
-          <div className="relative bg-white p-8 rounded-xl shadow-lg max-w-md w-full">
+          <div className="relative bg-white p-8 rounded-xl shadow-lg max-w-md w-full mx-auto">
             {/* <div className="absolute top-[-25px] left-1/2 transform -translate-x-1/2 bg-black text-white border-4 border-gray-100 rounded-full p-3 shadow-lg">
             <GoMortarBoard size={24} />
           </div> */}

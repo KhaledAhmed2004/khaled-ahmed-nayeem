@@ -31,7 +31,7 @@ export default function Home() {
       {/* <FeaturedProjects /> */}
       <ContactMe />
       {/* <Blog /> */}
-      {/* <AboutMe /> */}
+      <AboutMe />
       {/* <Footer /> */}
     </div>
   );
