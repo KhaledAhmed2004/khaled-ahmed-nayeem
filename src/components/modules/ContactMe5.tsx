@@ -21,7 +21,7 @@ const ContactMe5 = () => {
           Get in Touch
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 mt-2">
-          Let's Connect
+          Let&apos;s Connect
         </p>
       </div>
       <div className="flex flex-col lg:flex-row justify-between items-start">

@@ -27,11 +27,11 @@ export default function Home() {
     <div>
       <Navbar />
       <Hero />
-      {/* <MySliked /> */}
-      {/* <FeaturedProjects /> */}
-      {/* <ContactMe /> */}
-      {/* <Blog /> */}
-      {/* <AboutMe /> */}
+      <MySliked />
+      <FeaturedProjects />
+      <Blog />
+      <AboutMe />
+      <ContactMe />
       <Footer />
     </div>
   );
