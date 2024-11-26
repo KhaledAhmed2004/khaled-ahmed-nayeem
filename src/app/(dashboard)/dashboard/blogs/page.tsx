@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { FaEye, FaEdit, FaTrashAlt } from "react-icons/fa"; // Import icons
+import { Table, Button, Input } from "antd"; // Import Ant Design components
 
 const BlogManagement = () => {
   // Sample blog data with images
@@ -67,18 +68,79 @@ const BlogManagement = () => {
     alert("New blog added!");
   };
 
+  // Columns for the Ant Design Table
+  const columns = [
+    {
+      title: "#",
+      dataIndex: "id",
+      key: "id",
+      render: (_, __, index) => index + 1, // Display index as serial number
+      align: "center", // Center align
+    },
+    {
+      title: "Image",
+      dataIndex: "image",
+      key: "image",
+      render: (image) => <img src={image} alt="blog" className="w-16 h-16 object-cover rounded" />,
+      align: "center", // Center align
+    },
+    {
+      title: "Title",
+      dataIndex: "title",
+      key: "title",
+    },
+    {
+      title: "Author",
+      dataIndex: "author",
+      key: "author",
+    },
+    {
+      title: "Date",
+      dataIndex: "date",
+      key: "date",
+    },
+    {
+      title: "Actions",
+      key: "actions",
+      render: (_, record) => (
+        <div className="flex justify-center space-x-2">
+          <Button
+            icon={<FaEye />}
+            onClick={() => handleView(record.id)}
+            type="link"
+            title="View Blog"
+          />
+          <Button
+            icon={<FaEdit />}
+            onClick={() => handleUpdate(record.id)}
+            type="link"
+            title="Update Blog"
+          />
+          <Button
+            icon={<FaTrashAlt />}
+            onClick={() => handleDelete(record.id)}
+            type="link"
+            danger
+            title="Delete Blog"
+          />
+        </div>
+      ),
+      align: "center", // Center align
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <h1 className="text-2xl font-bold text-center mb-6">Blog Management</h1>
 
       {/* Add New Blog Button */}
       <div className="mb-4 text-right">
-        <button
+        <Button
           className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
           onClick={() => setIsFormOpen(true)}
         >
           Add New Blog
-        </button>
+        </Button>
       </div>
 
       {/* Add New Blog Form */}
@@ -119,25 +181,25 @@ const BlogManagement = () => {
             />
           </div>
           <div className="mb-4">
-            <button
+            <Button
               onClick={handleAddBlog}
               className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-700"
             >
               Add Blog
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={() => setIsFormOpen(false)}
               className="ml-2 bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-700"
             >
               Cancel
-            </button>
+            </Button>
           </div>
         </div>
       )}
 
       {/* Search Bar */}
       <div className="mb-4">
-        <input
+        <Input
           type="text"
           placeholder="Search blogs..."
           value={searchTerm}
@@ -146,70 +208,14 @@ const BlogManagement = () => {
         />
       </div>
 
-      {/* Blog Table */}
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border rounded-lg">
-          <thead>
-            <tr className="bg-gray-200 text-left">
-              <th className="py-3 px-4">#</th>
-              <th className="py-3 px-4">Image</th>
-              <th className="py-3 px-4">Title</th>
-              <th className="py-3 px-4">Author</th>
-              <th className="py-3 px-4">Date</th>
-              <th className="py-3 px-4">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredBlogs.length > 0 ? (
-              filteredBlogs.map((blog, index) => (
-                <tr key={blog.id} className="border-t hover:bg-gray-100">
-                  <td className="py-3 px-4">{index + 1}</td>
-                  <td className="py-3 px-4">
-                    <img
-                      src={blog.image}
-                      alt={blog.title}
-                      className="w-16 h-16 object-cover rounded"
-                    />
-                  </td>
-                  <td className="py-3 px-4">{blog.title}</td>
-                  <td className="py-3 px-4">{blog.author}</td>
-                  <td className="py-3 px-4">{blog.date}</td>
-                  <td className="py-3 px-4 flex space-x-3">
-                    {/* Action Icons */}
-                    <button
-                      className="text-blue-500 hover:text-blue-700"
-                      onClick={() => handleView(blog.id)}
-                      title="View Blog"
-                    >
-                      <FaEye size={18} />
-                    </button>
-                    <button
-                      className="text-yellow-500 hover:text-yellow-700"
-                      onClick={() => handleUpdate(blog.id)}
-                      title="Update Blog"
-                    >
-                      <FaEdit size={18} />
-                    </button>
-                    <button
-                      className="text-red-500 hover:text-red-700"
-                      onClick={() => handleDelete(blog.id)}
-                      title="Delete Blog"
-                    >
-                      <FaTrashAlt size={18} />
-                    </button>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan={6} className="py-3 px-4 text-center text-gray-500">
-                  No blogs found.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+      {/* Ant Design Table */}
+      <Table
+        columns={columns}
+        dataSource={filteredBlogs}
+        rowKey="id"
+        pagination={false} // Disable pagination for now
+        className="overflow-x-auto"
+      />
     </div>
   );
 };
