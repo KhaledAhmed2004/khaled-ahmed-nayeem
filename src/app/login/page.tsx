@@ -29,7 +29,10 @@ const Login: React.FC = () => {
           Admin Login
         </h2>
         <p className="text-center text-sm text-gray-600 mb-6">
-          Please sign in to access your dashboard 😎
+          Please sign in to access your dashboard{" "}
+          <span className="inline-block cursor-pointer transform transition-all duration-200 hover:scale-150">
+            😎
+          </span>
         </p>
         <form
           // onSubmit={handleSubmit(onSubmit)}
