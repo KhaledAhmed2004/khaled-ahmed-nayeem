@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Link as ScrollLink } from "react-scroll";
 import React from "react";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { LuPhone } from "react-icons/lu";
@@ -26,21 +27,33 @@ const Hero = () => {
           {/* Left Section (Social Icons with Hover Text) */}
           <div className="absolute top-1/2 left-10 xl:left-4 transform -translate-y-1/2 md:flex flex-col items-center gap-4 md:gap-8 hidden">
             {[
-              { icon: <FaInstagram />, label: "Instagram" },
-              { icon: <FaLinkedin />, label: "LinkedIn" },
-              { icon: <FaGithub />, label: "GitHub" },
-              { icon: <LuPhone />, label: "Phone" },
-            ].map(({ icon, label }) => (
+              {
+                icon: <FaInstagram />,
+                label: "Instagram",
+                link: "https://www.instagram.com/khaled_ahmed_nayeem",
+              },
+              {
+                icon: <FaLinkedin />,
+                label: "LinkedIn",
+                link: "https://www.linkedin.com/in/khaledAhmedNayeem",
+              },
+              {
+                icon: <FaGithub />,
+                label: "GitHub",
+                link: "https://github.com/KhaledAhmed2004",
+              },
+              // { icon: <LuPhone />, label: "Phone" },
+            ].map(({ icon, label, link }) => (
               <div
                 key={label}
                 className="relative group overflow-visible transition-all duration-300 transform hover:scale-110 hover:text-blue-500"
               >
-                <a
-                  href="#"
+                <Link
+                  href={link}
                   className="text-gray-600 text-3xl group-hover:text-black transition-all"
                 >
                   {icon}
-                </a>
+                </Link>
                 <span className="absolute left-8 bottom-2 text-gray-600 text-sm opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all font-semibold font-jetBrains-Mono">
                   {label}
                 </span>
@@ -80,7 +93,7 @@ const Hero = () => {
             </p>
 
             {/* Button */}
-            <motion.button
+            {/* <motion.button
               initial={{ opacity: 0, y: 20 }}
               animate={{
                 opacity: 1,
@@ -104,7 +117,15 @@ const Hero = () => {
               }}
               className="hidden absolute top-[35%] right-10 bg-gradient-to-r from-blue-500 to-purple-600 text-white md:flex items-center gap-2 py-3 px-6 rounded-3xl shadow-2xl text-xl font-semibold font-neue-machina"
             >
-              Say Hello
+              <ScrollLink
+                to="contact_me"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+              >
+                Say Hello
+              </ScrollLink>
               <motion.span
                 animate={{
                   rotate: [0, 8, -8, 8, -8, 0], // Tight rotation for the wave effect
@@ -123,47 +144,109 @@ const Hero = () => {
                   👋
                 </span>
               </motion.span>
-            </motion.button>
-
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{
-                opacity: 1,
-                y: [0, -10, 0],
-              }}
-              whileHover={{
-                scale: 1.1,
-                boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
-              }}
-              whileTap={{ scale: 0.95 }}
-              transition={{
-                y: {
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  ease: "easeInOut",
-                },
-                opacity: {
-                  duration: 0.5,
-                },
-              }}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white flex items-center gap-2 py-3 px-6 rounded-3xl shadow-2xl text-base sm:text-xl font-semibold md:hidden"
+            </motion.button> */}
+            {/* "Say Hello" Button as a full ScrollLink */}
+            <ScrollLink
+              to="contact_me"
+              spy={true}
+              smooth={true}
+              offset={-100}
+              duration={500}
+              className="inline-block"
             >
-              Say Hello
-              <motion.span
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
                 animate={{
-                  rotate: [0, 8, -8, 8, -8, 0],
+                  opacity: 1,
+                  y: [0, -10, 0], // Keyframes for the floating effect
                 }}
+                whileHover={{
+                  scale: 1.1,
+                  boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
+                }}
+                whileTap={{ scale: 0.95 }}
                 transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatType: "loop",
+                  y: {
+                    duration: 2, // Duration of one float cycle
+                    repeat: Infinity, // Infinite repetition
+                    repeatType: "loop", // Loop back and forth
+                    ease: "easeInOut", // Smooth easing
+                  },
+                  opacity: {
+                    duration: 0.5, // Opacity animation duration
+                  },
                 }}
-                className="inline-block"
+                className="hidden absolute top-[35%] right-10 bg-gradient-to-r from-blue-500 to-purple-600 text-white md:flex items-center gap-2 py-3 px-6 rounded-3xl shadow-2xl text-xl font-semibold font-neue-machina"
               >
-                <span className="text-3xl">👋</span>
-              </motion.span>
-            </motion.button>
+                <span>Say Hello</span>
+                <motion.span
+                  animate={{
+                    rotate: [0, 8, -8, 8, -8, 0], // Tight rotation for the wave effect
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                  }}
+                  style={{
+                    transformOrigin: "bottom center", // Rotation point at the bottom
+                  }}
+                  className="inline-block"
+                >
+                  <span className="h-10 w-10 text-3xl flex items-center justify-center">
+                    👋
+                  </span>
+                </motion.span>
+              </motion.button>
+            </ScrollLink>
+
+            <ScrollLink
+              to="contact_me"
+              spy={true}
+              smooth={true}
+              offset={-100}
+              duration={500}
+            >
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{
+                  opacity: 1,
+                  y: [0, -10, 0],
+                }}
+                whileHover={{
+                  scale: 1.1,
+                  boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
+                }}
+                whileTap={{ scale: 0.95 }}
+                transition={{
+                  y: {
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    ease: "easeInOut",
+                  },
+                  opacity: {
+                    duration: 0.5,
+                  },
+                }}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white flex items-center gap-2 py-3 px-6 rounded-3xl shadow-2xl text-base sm:text-xl font-semibold md:hidden"
+              >
+                Say Hello
+                <motion.span
+                  animate={{
+                    rotate: [0, 8, -8, 8, -8, 0],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                  }}
+                  className="inline-block"
+                >
+                  <span className="text-3xl">👋</span>
+                </motion.span>
+              </motion.button>
+            </ScrollLink>
 
             {/* Action Buttons */}
             <div className="flex gap-4 justify-center md:justify-start font-semibold">
@@ -171,14 +254,24 @@ const Hero = () => {
                 {/* Resume Buttons */}
                 <div className="flex gap-2 items-center text-purple-600 hover:text-white border border-purple-600 py-2 px-6 rounded-l-full hover:bg-purple-600 border-r-0 transition-all">
                   <GoDownload />
-                  <Link href="#" className="text-sm sm:text-base">
+                  <a
+                    href="KhaledAhmedMERN-resume.pdf"
+                    download="Khaled-Ahmed-Nayeem-Resume"
+                    className="text-sm sm:text-base"
+                  >
                     GET RESUME
-                  </Link>
+                  </a>
                 </div>
 
                 <div className="flex gap-2 items-center text-purple-600 hover:text-white border border-purple-600 py-2 px-6 rounded-r-full hover:bg-purple-600 transition-all">
                   <IoEye />
-                  <Link href="#" className="text-sm sm:text-base">
+                  {/* <Link href="#" className="text-sm sm:text-base">
+                    VIEW RESUME
+                  </Link> */}
+                  <Link
+                    href="https://drive.google.com/file/d/1ZCJiR0azlnxL7QUwFl-iL1HKliUdX0Yg/view?usp=sharing"
+                    className="text-sm sm:text-base"
+                  >
                     VIEW RESUME
                   </Link>
                 </div>

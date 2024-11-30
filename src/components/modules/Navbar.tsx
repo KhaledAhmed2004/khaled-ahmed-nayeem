@@ -1,5 +1,9 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
+import { GoHome } from "react-icons/go";
+import { VscTools } from "react-icons/vsc";
+import { CgWebsite } from "react-icons/cg";
+import { FaRegUser, FaRegPaperPlane } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 
@@ -32,9 +36,9 @@ const Navbar = () => {
     const currentScrollY = window.scrollY;
 
     if (currentScrollY > lastScrollY && currentScrollY > 100) {
-      setIsVisible(false); // Hide the navbar on scroll down
+      setIsVisible(false);
     } else {
-      setIsVisible(true); // Show the navbar on scroll up
+      setIsVisible(true);
     }
 
     setLastScrollY(currentScrollY);
@@ -122,6 +126,33 @@ const Navbar = () => {
           </motion.button>
         </div>
       </motion.div>
+
+      {/* Mobile Bottom Navigation */}
+      <div
+        className={`fixed bottom-0 w-full z-50 bg-gray-100 rounded-t-3xl dark:bg-gray-800 text-black dark:text-white md:hidden`}
+      >
+        <div className="flex justify-around items-center py-3">
+          {[
+            { icon: <GoHome className="text-xl" />, label: "Home" },
+            { icon: <VscTools className="text-xl" />, label: "Skills" },
+            { icon: <CgWebsite className="text-xl" />, label: "Projects" },
+            { icon: <FaRegUser className="text-xl" />, label: "About" },
+            { icon: <FaRegPaperPlane className="text-xl" />, label: "Contact" },
+          ].map(({ icon, label }, index) => (
+            <motion.button
+              key={index}
+              className="flex flex-col items-center"
+              aria-label={label}
+              whileHover={{ scale: 1.2, y: -5 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 200, damping: 10 }}
+            >
+              {icon}
+              <span className="text-sm">{label}</span>
+            </motion.button>
+          ))}
+        </div>
+      </div>
     </>
   );
 };
