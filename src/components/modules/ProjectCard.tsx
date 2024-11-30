@@ -78,7 +78,7 @@ const ProjectCard = ({
           </ul>
 
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <button className="flex items-center gap-2 text-blue-600 hover:underline">
+            <button className="flex items-center gap-2 text-blue-600 hover:text-blue-800 hover:underline underline-offset-2">
               <FaGlobe />
               <Link
                 href={project.liveLink}
@@ -88,7 +88,7 @@ const ProjectCard = ({
                 Live Link
               </Link>
             </button>
-            <button className="flex items-center gap-2 text-gray-600 hover:text-gray-800">
+            <button className="flex items-center gap-2 text-gray-600 hover:text-gray-800 hover:underline underline-offset-2">
               <FaGithub />
               <Link
                 href={project.codeLink}

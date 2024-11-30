@@ -1,5 +1,6 @@
 "use client";
 import AboutMe from "@/components/modules/AboutMe";
+import BackToTopButton from "@/components/modules/BackToTopButton";
 import Blog from "@/components/modules/Blog";
 import ContactMe from "@/components/modules/ContactMe";
 import FeaturedProjects from "@/components/modules/FeaturedProjects";
@@ -33,6 +34,7 @@ export default function Home() {
       <AboutMe />
       <ContactMe />
       <Footer />
+      <BackToTopButton />
     </div>
   );
 }
