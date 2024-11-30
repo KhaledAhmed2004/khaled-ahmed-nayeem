@@ -1,136 +1,266 @@
+// "use client";
+// import React from "react";
+// import { Table, Space, Button, Popconfirm, Tooltip, Tag } from "antd"; // Import Ant Design components
+// import { FaEdit, FaTimes, FaPlus } from "react-icons/fa";
+
+// interface Skill {
+//   key: string;
+//   skillName: string;
+//   proficiency: string;
+//   category: string;
+// }
+
+// const SkillManagementTable: React.FC = () => {
+//   const columns = [
+//     {
+//       title: "Skill Name",
+//       dataIndex: "skillName",
+//       key: "skillName",
+//       render: (text: string) => <span className="font-semibold">{text}</span>,
+//     },
+//     {
+//       title: "Proficiency",
+//       dataIndex: "proficiency",
+//       key: "proficiency",
+//       render: (proficiency: string) => (
+//         <Tag
+//           color={
+//             proficiency === "Expert"
+//               ? "green"
+//               : proficiency === "Intermediate"
+//               ? "blue"
+//               : "red"
+//           }
+//         >
+//           {proficiency}
+//         </Tag>
+//       ),
+//     },
+//     {
+//       title: "Category",
+//       dataIndex: "category",
+//       key: "category",
+//       render: (category: string) => <span>{category}</span>,
+//     },
+//     {
+//       title: "Actions",
+//       key: "actions",
+//       render: (_: unknown, record: Skill) => (
+//         <Space size="middle">
+//           <Tooltip title="Edit Skill">
+//             <Button
+//               type="link"
+//               icon={<FaEdit />}
+//               onClick={() => handleEdit(record)}
+//             />
+//           </Tooltip>
+//           <Tooltip title="Delete Skill">
+//             <Popconfirm
+//               title="Are you sure you want to delete this skill?"
+//               onConfirm={() => handleDelete(record)}
+//               okText="Yes"
+//               cancelText="No"
+//             >
+//               <Button type="link" icon={<FaTimes />} danger />
+//             </Popconfirm>
+//           </Tooltip>
+//         </Space>
+//       ),
+//     },
+//   ];
+
+//   const data: Skill[] = [
+//     {
+//       key: "1",
+//       skillName: "React",
+//       proficiency: "Expert",
+//       category: "Frontend Development",
+//     },
+//     {
+//       key: "2",
+//       skillName: "Node.js",
+//       proficiency: "Intermediate",
+//       category: "Backend Development",
+//     },
+//     {
+//       key: "3",
+//       skillName: "Python",
+//       proficiency: "Beginner",
+//       category: "Data Analysis",
+//     },
+//   ];
+
+//   const handleEdit = (record: Skill) => {
+//     console.log("Edit skill:", record);
+//   };
+
+//   const handleDelete = (record: Skill) => {
+//     console.log("Delete skill:", record);
+//   };
+
+//   const handleAddSkill = () => {
+//     console.log("Add new skill");
+//   };
+
+//   return (
+//     <div className="container mx-auto p-4">
+//       {/* <h1 className="text-2xl font-bold text-center mb-6"> */}
+//       <h1 className="text-4xl font-extrabold text-center  mb-6 text-gray-800">
+//         Skills Management
+//       </h1>
+//       <div className="flex justify-end mb-4">
+//         <Button
+//           type="primary"
+//           icon={<FaPlus />}
+//           onClick={handleAddSkill}
+//           className="flex items-center"
+//         >
+//           Add Skill
+//         </Button>
+//       </div>
+//       <Table
+//         columns={columns}
+//         dataSource={data}
+//         pagination={{ pageSize: 5 }}
+//         rowKey="key"
+//       />
+//     </div>
+//   );
+// };
+
+// export default SkillManagementTable;
+
 "use client";
 import React, { useState } from "react";
-import { Table, Button, Input } from "antd";
-import { FaEdit, FaTrash, FaPlusCircle } from "react-icons/fa";
+import { Table, Space, Button, Popconfirm, Tooltip, Tag } from "antd"; // Import Ant Design components
+import { FaEdit, FaTimes, FaPlus } from "react-icons/fa";
+import CreateSkillsModal from "@/components/ui/modal/CreateSkillsModal";
 
-const ManageSkillsPage = () => {
-  const [search, setSearch] = useState("");
-  const [skills, setSkills] = useState([
-    {
-      id: 1,
-      name: "React",
-      level: "Advanced",
-    },
-    {
-      id: 2,
-      name: "Node.js",
-      level: "Intermediate",
-    },
-    {
-      id: 3,
-      name: "CSS",
-      level: "Advanced",
-    },
-    {
-      id: 4,
-      name: "JavaScript",
-      level: "Expert",
-    },
-  ]);
+interface Skill {
+  key: string;
+  skillName: string;
+  proficiency: string;
+  category: string;
+}
 
-  // Add a new skill
-  const addSkill = () => {
-    const newSkill = {
-      id: skills.length + 1,
-      name: "New Skill",
-      level: "Beginner",
-    };
-    setSkills([...skills, newSkill]);
-  };
+const SkillManagementTable: React.FC = () => {
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
-  // Delete a skill
-  const deleteSkill = (id) => {
-    setSkills(skills.filter((skill) => skill.id !== id));
-  };
-
-  // Filter skills based on search input
-  const filteredSkills = skills.filter((skill) =>
-    skill.name.toLowerCase().includes(search.toLowerCase())
-  );
-
-  // Define columns for Ant Design table
   const columns = [
     {
-      title: "#",
-      dataIndex: "id",
-      key: "id",
-      render: (text, record, index) => index + 1, // Display index
-      align: "center", // Center align this column
-    },
-    {
       title: "Skill Name",
-      dataIndex: "name",
-      key: "name",
+      dataIndex: "skillName",
+      key: "skillName",
+      render: (text: string) => <span className="font-semibold">{text}</span>,
     },
     {
-      title: "Proficiency Level",
-      dataIndex: "level",
-      key: "level",
+      title: "Proficiency",
+      dataIndex: "proficiency",
+      key: "proficiency",
+      render: (proficiency: string) => (
+        <Tag
+          color={
+            proficiency === "Expert"
+              ? "green"
+              : proficiency === "Intermediate"
+              ? "blue"
+              : "red"
+          }
+        >
+          {proficiency}
+        </Tag>
+      ),
+    },
+    {
+      title: "Category",
+      dataIndex: "category",
+      key: "category",
+      render: (category: string) => <span>{category}</span>,
     },
     {
       title: "Actions",
       key: "actions",
-      align: "center", // Center align the actions column
-      render: (_, record) => (
-        <div className="flex justify-center gap-2">
-          <Button
-            type="link"
-            className="text-blue-600 hover:text-blue-800"
-            title="Edit"
-          >
-            <FaEdit />
-          </Button>
-          <Button
-            type="link"
-            className="text-red-600 hover:text-red-800"
-            title="Delete"
-            onClick={() => deleteSkill(record.id)}
-          >
-            <FaTrash />
-          </Button>
-        </div>
+      render: (_: unknown, record: Skill) => (
+        <Space size="middle">
+          <Tooltip title="Edit Skill">
+            <Button
+              type="link"
+              icon={<FaEdit />}
+              onClick={() => handleEdit(record)}
+            />
+          </Tooltip>
+          <Tooltip title="Delete Skill">
+            <Popconfirm
+              title="Are you sure you want to delete this skill?"
+              onConfirm={() => handleDelete(record)}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button type="link" icon={<FaTimes />} danger />
+            </Popconfirm>
+          </Tooltip>
+        </Space>
       ),
     },
   ];
-  
+
+  const data: Skill[] = [
+    {
+      key: "1",
+      skillName: "React",
+      proficiency: "Expert",
+      category: "Frontend Development",
+    },
+    {
+      key: "2",
+      skillName: "Node.js",
+      proficiency: "Intermediate",
+      category: "Backend Development",
+    },
+    {
+      key: "3",
+      skillName: "Python",
+      proficiency: "Beginner",
+      category: "Data Analysis",
+    },
+  ];
+
+  const handleEdit = (record: Skill) => {
+    console.log("Edit skill:", record);
+  };
+
+  const handleDelete = (record: Skill) => {
+    console.log("Delete skill:", record);
+  };
 
   return (
-    <div className="bg-gray-50 min-h-screen p-8">
-      {/* Page Header */}
-      <header className="flex justify-between items-center mb-6">
-        <h1 className="text-4xl font-bold text-gray-800">Manage Skills</h1>
-        <button
-          onClick={addSkill}
-          className="flex items-center gap-2 bg-blue-600 text-white px-5 py-3 rounded-lg shadow hover:bg-blue-700 transition"
+    <div className="container mx-auto p-4">
+      {/* <h1 className="text-2xl font-bold text-center mb-6"> */}
+      <h1 className="text-4xl font-extrabold text-center  mb-6 text-gray-800">
+        Skills Management
+      </h1>
+      <div className="flex justify-end mb-4">
+        <Button
+          type="primary"
+          icon={<FaPlus />}
+          onClick={() => setModalIsOpen(true)}
+          className="flex items-center"
         >
-          <FaPlusCircle />
           Add Skill
-        </button>
-      </header>
-
-      {/* Search Bar */}
-      <div className="mb-6">
-        <Input
-          placeholder="Search skills..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="rounded-lg"
-        />
+        </Button>
       </div>
-
-      {/* Skills Table */}
       <Table
         columns={columns}
-        dataSource={filteredSkills}
-        rowKey="id"
-        className="bg-white rounded-lg shadow-md"
-        pagination={{
-          position: ["bottomCenter"],
-          pageSize: 5,
-        }}
+        dataSource={data}
+        pagination={{ pageSize: 5 }}
+        rowKey="key"
+      />
+      <CreateSkillsModal
+        modalIsOpen={modalIsOpen}
+        setModalIsOpen={setModalIsOpen}
       />
     </div>
   );
 };
 
-export default ManageSkillsPage;
+export default SkillManagementTable;

@@ -13,7 +13,7 @@ const Hero = () => {
     <>
       {/* Background */}
       {/* <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]" /> */}
-      <div className="relative max-w-7xl mx-auto">
+      <div id="hero" className="relative max-w-7xl mx-auto">
         {/* Background */}
         {/* <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]" /> */}
         <div className="absolute top-0 left-0 h-full w-full bg-white z-[-10]">

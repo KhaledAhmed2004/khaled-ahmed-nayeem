@@ -136,7 +136,7 @@ const getSkillLevelWidth = (level: string) => {
 
 const SkillsList = () => {
   return (
-    <div className="py-12 dark:bg-gray-900">
+    <div id="skills" className="py-12 dark:bg-gray-900">
       <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100 text-center">
         My Skills
       </h2>

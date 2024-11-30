@@ -92,7 +92,11 @@ const FeaturedProjects = () => {
   });
 
   return (
-    <div ref={container} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div
+      id="projects"
+      ref={container}
+      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+    >
       <div className="grid items-center justify-center text-center">
         <h3 className="text-lg sm:text-xl font-semibold text-gray-600">
           Real-World Results

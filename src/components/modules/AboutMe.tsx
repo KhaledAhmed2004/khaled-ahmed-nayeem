@@ -152,7 +152,10 @@ const AboutMe = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-gray-100">
+    <section
+      id="about_me"
+      className="py-20 bg-gradient-to-b from-gray-50 to-gray-100"
+    >
       {/* Header */}
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold text-gray-800">About Me</h2>

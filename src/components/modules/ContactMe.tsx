@@ -13,7 +13,7 @@ import Link from "next/link";
 const ContactMe = () => {
   return (
     <div
-      id="Contact_me"
+      id="contact_me"
       className="py-10 dark:bg-gray-900 max-w-7xl mx-auto"
     >
       <div className="text-center mb-8">

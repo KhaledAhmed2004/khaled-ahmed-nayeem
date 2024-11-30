@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { motion } from "framer-motion";
-import { FaRegUser } from "react-icons/fa";
-import { CgWebsite } from "react-icons/cg";
-import { VscTools } from "react-icons/vsc";
-import { GoHome } from "react-icons/go";
-import { FaRegPaperPlane } from "react-icons/fa";
+import { Link } from "react-scroll";
 
 const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -30,49 +28,89 @@ const Navbar = () => {
     }
   }, []);
 
+  const handleScroll = useCallback(() => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      setIsVisible(false); // Hide the navbar on scroll down
+    } else {
+      setIsVisible(true); // Show the navbar on scroll up
+    }
+
+    setLastScrollY(currentScrollY);
+  }, [lastScrollY]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
+
   return (
     <>
       {/* Top Navbar */}
-      <div
+      <motion.div
         className={`sticky top-0 z-50 p-5 ${
           isDarkMode ? "bg-gray-800 text-white" : "bg-transparent"
-        } backdrop-blur-[10px]`}
+        } backdrop-blur-[10px] transition-transform duration-300 ${
+          isVisible ? "translate-y-0" : "-translate-y-full"
+        }`}
       >
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          {/* Logo */}
-          <h2
-            className="text-lg lg:hidden font-semibold tracking-[0.08em] cursor-pointer"
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            Khaled Ahmed
+          <h2 className="text-lg lg:hidden font-semibold tracking-[0.08em] cursor-pointer">
+            <Link
+              to="hero"
+              spy={true}
+              smooth={true}
+              offset={-100}
+              duration={500}
+            >
+              Khaled Ahmed
+            </Link>
           </h2>
-          <h2
-            className="hidden lg:block text-xl font-semibold tracking-[0.08em] cursor-pointer"
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            Khaled Ahmed Nayeem
+          <h2 className="hidden lg:block text-xl font-semibold tracking-[0.08em] cursor-pointer">
+            <Link
+              to="hero"
+              spy={true}
+              smooth={true}
+              offset={-100}
+              duration={500}
+            >
+              Khaled Ahmed Nayeem
+            </Link>
           </h2>
 
-          {/* Desktop Navigation */}
           <ul className="hidden md:flex gap-8 text-lg">
-            <li className="cursor-pointer hover:text-gray-500 transition">
-              Home
-            </li>
-            <li className="cursor-pointer hover:text-gray-500 transition">
-              Skills
-            </li>
-            <li className="cursor-pointer hover:text-gray-500 transition">
-              Projects
-            </li>
-            <li className="cursor-pointer hover:text-gray-500 transition">
-              About Me
-            </li>
-            <li className="cursor-pointer hover:text-gray-500 transition">
-              Contact Me
-            </li>
+            {[
+              { label: "Home", to: "hero" },
+              { label: "Skills", to: "skills" },
+              { label: "Projects", to: "projects" },
+              { label: "Blog", to: "blog" },
+              { label: "About Me", to: "about_me" },
+              { label: "Contact Me", to: "contact_me" },
+            ].map(({ label, to }) => (
+              <li
+                key={to}
+                className="group relative cursor-pointer transition text-gray-700 dark:text-gray-300 hover:text-gray-500"
+              >
+                <Link
+                  to={to}
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                  activeClass="text-blue-500 transition font-semibold underline underline-offset-[3px] decoration-[1.5px]"
+                  className="relative"
+                >
+                  {label}
+                  <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              </li>
+            ))}
           </ul>
 
-          {/* Dark/Light Mode Toggle */}
           <motion.button
             onClick={toggleDarkMode}
             className="ml-4 text-2xl text-black dark:text-white transition-colors duration-300 hover:scale-110"
@@ -83,34 +121,7 @@ const Navbar = () => {
             {isDarkMode ? <MdLightMode /> : <MdDarkMode />}
           </motion.button>
         </div>
-      </div>
-
-      {/* Mobile Bottom Navigation */}
-      <div
-        className={`fixed bottom-0 w-full z-50 bg-gray-100 rounded-t-3xl dark:bg-gray-800 text-black dark:text-white md:hidden`}
-      >
-        <div className="flex justify-around items-center py-3">
-          {[
-            { icon: <GoHome className="text-xl" />, label: "Home" },
-            { icon: <VscTools className="text-xl" />, label: "Skills" },
-            { icon: <CgWebsite className="text-xl" />, label: "Projects" },
-            { icon: <FaRegUser className="text-xl" />, label: "About" },
-            { icon: <FaRegPaperPlane className="text-xl" />, label: "Contact" },
-          ].map(({ icon, label }, index) => (
-            <motion.button
-              key={index}
-              className="flex flex-col items-center"
-              aria-label={label}
-              whileHover={{ scale: 1.2, y: -5 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 200, damping: 10 }}
-            >
-              {icon}
-              <span className="text-sm">{label}</span>
-            </motion.button>
-          ))}
-        </div>
-      </div>
+      </motion.div>
     </>
   );
 };

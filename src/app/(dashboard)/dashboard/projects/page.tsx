@@ -1,155 +1,282 @@
+// "use client";
+// import React from "react";
+// import { Table, Space, Button, Popconfirm, Tooltip, Image } from "antd"; // Import Ant Design components
+// import { FaCheck, FaTimes, FaEdit } from "react-icons/fa";
+
+// interface Project {
+//   key: string;
+//   projectName: string;
+//   status: string;
+//   deadline: string;
+//   image: string;
+// }
+
+// const ProjectManagementTable: React.FC = () => {
+//   const columns = [
+//     {
+//       title: "Project Name",
+//       dataIndex: "projectName",
+//       key: "projectName",
+//       render: (text: string, record: Project) => (
+//         <div className="flex items-center gap-2">
+//           <Image
+//             src={record.image}
+//             alt={text}
+//             width={60}
+//             height={40}
+//             className="rounded-xl mr-3 shadow-lg"
+//             preview={{ mask: "Preview" }}
+//           />
+//           <span className="font-semibold">{text}</span>
+//         </div>
+//       ),
+//     },
+//     {
+//       title: "Status",
+//       dataIndex: "status",
+//       key: "status",
+//       render: (status: string) => (
+//         <span
+//           className={`font-medium ${
+//             status === "In Progress" ? "text-green-600" : "text-red-500"
+//           }`}
+//         >
+//           {status}
+//         </span>
+//       ),
+//     },
+//     {
+//       title: "Deadline",
+//       dataIndex: "deadline",
+//       key: "deadline",
+//     },
+//     {
+//       title: "Actions",
+//       key: "actions",
+//       render: (_: unknown, record: Project) => (
+//         <Space size="middle">
+//           <Tooltip title="Edit Project">
+//             <Button
+//               type="link"
+//               icon={<FaEdit />}
+//               onClick={() => handleEdit(record)}
+//             />
+//           </Tooltip>
+//           <Tooltip title="Reject Project">
+//             <Popconfirm
+//               title="Are you sure you want to reject this project?"
+//               onConfirm={() => handleReject(record)}
+//               okText="Yes"
+//               cancelText="No"
+//             >
+//               <Button type="link" icon={<FaTimes />} danger />
+//             </Popconfirm>
+//           </Tooltip>
+//           <Tooltip title="Approve Project">
+//             <Button
+//               type="link"
+//               icon={<FaCheck />}
+//               onClick={() => handleApprove(record)}
+//             />
+//           </Tooltip>
+//         </Space>
+//       ),
+//     },
+//   ];
+
+//   const data: Project[] = [
+//     {
+//       key: "1",
+//       projectName: "Project Alpha",
+//       status: "In Progress",
+//       deadline: "2024-12-31",
+//       image: "https://i.ibb.co/jf4XKCz/img1.jpg",
+//     },
+//     {
+//       key: "2",
+//       projectName: "Project Beta",
+//       status: "Not Started",
+//       deadline: "2025-01-15",
+//       image: "https://i.ibb.co/jf4XKCz/img1.jpg",
+//     },
+//   ];
+
+//   const handleEdit = (record: Project) => {
+//     console.log("Edit project:", record);
+//   };
+
+//   const handleApprove = (record: Project) => {
+//     console.log("Approve project:", record);
+//   };
+
+//   const handleReject = (record: Project) => {
+//     console.log("Reject project:", record);
+//   };
+
+//   return (
+//     <div className="container mx-auto p-4">
+//       {/* <h1 className="text-2xl font-bold text-center mb-6"> */}
+//       <h1 className="text-4xl font-extrabold text-center  mb-6 text-gray-800">
+//         Project Management
+//       </h1>
+//       <Table
+//         columns={columns}
+//         dataSource={data}
+//         pagination={false}
+//         rowKey="key"
+//       />
+//     </div>
+//   );
+// };
+
+// export default ProjectManagementTable;
+
 "use client";
 import React, { useState } from "react";
-import { Space, Table, Image, Button, Modal, Input } from "antd";
-import { FaEdit, FaPlusCircle, FaTrashAlt } from "react-icons/fa";
+import { Table, Space, Button, Popconfirm, Tooltip, Image } from "antd"; // Import Ant Design components
+import { FaCheck, FaTimes, FaEdit, FaPlus } from "react-icons/fa";
+import CreateProjectModal from "@/components/ui/modal/CreateProjectModal";
 
-const Page = () => {
-  // Example project data
-  const [data, setData] = useState([
-    {
-      key: "1",
-      name: "Website Redesign",
-      image: "https://i.ibb.co.com/D8R0k86/img2.webp",
-    },
-    {
-      key: "2",
-      name: "Mobile App Development",
-      image: "https://i.ibb.co.com/D8R0k86/img2.webp",
-    },
-    {
-      key: "3",
-      name: "API Integration",
-      image: "https://i.ibb.co.com/D8R0k86/img2.webp",
-    },
-  ]);
-  const [filteredData, setFilteredData] = useState(data); // For storing filtered data
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [newProject, setNewProject] = useState({
-    name: "",
-    image: "",
-  });
+interface Project {
+  key: string;
+  projectName: string;
+  status: string;
+  deadline: string;
+  image: string;
+}
 
-  const handleAddProject = () => {
-    const newProjectData = {
-      key: (data.length + 1).toString(),
-      name: newProject.name,
-      image: newProject.image,
-    };
-    const updatedData = [...data, newProjectData];
-    setData(updatedData);
-    setFilteredData(updatedData); // Update filtered data when a new project is added
-    setIsModalVisible(false);
-    setNewProject({ name: "", image: "" });
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleSearch = (value: string) => {
-    const filtered = data.filter((item) =>
-      item.name.toLowerCase().includes(value.toLowerCase())
-    );
-    setFilteredData(filtered);
-  };
+const ProjectManagementTable: React.FC = () => {
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
   const columns = [
     {
-      title: "Thumbnail",
-      dataIndex: "image",
-      key: "image",
-      render: (src) => <Image src={src} alt="Project Thumbnail" width={50} />,
-    },
-    {
       title: "Project Name",
-      dataIndex: "name",
-      key: "name",
-      render: (text) => <a>{text}</a>,
+      dataIndex: "projectName",
+      key: "projectName",
+      render: (text: string, record: Project) => (
+        <div className="flex items-center gap-2">
+          <Image
+            src={record.image}
+            alt={text}
+            width={60}
+            height={40}
+            className="rounded-xl mr-3 shadow-lg"
+            preview={{ mask: "Preview" }}
+          />
+          <span className="font-semibold">{text}</span>
+        </div>
+      ),
     },
     {
-      title: "Action",
-      key: "action",
-      render: (_, record) => (
-        <Space
-          size="middle"
-          style={{ display: "flex", justifyContent: "center" }}
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+      render: (status: string) => (
+        <span
+          className={`font-medium ${
+            status === "In Progress" ? "text-green-600" : "text-red-500"
+          }`}
         >
-          <button className="text-blue-500 hover:text-blue-700">
-            <FaEdit />
-          </button>
-          <button className="text-red-500 hover:text-red-700">
-            <FaTrashAlt />
-          </button>
+          {status}
+        </span>
+      ),
+    },
+    {
+      title: "Deadline",
+      dataIndex: "deadline",
+      key: "deadline",
+    },
+    {
+      title: "Actions",
+      key: "actions",
+      render: (_: unknown, record: Project) => (
+        <Space size="middle">
+          <Tooltip title="Edit Project">
+            <Button
+              type="link"
+              icon={<FaEdit />}
+              onClick={() => handleEdit(record)}
+            />
+          </Tooltip>
+          <Tooltip title="Reject Project">
+            <Popconfirm
+              title="Are you sure you want to reject this project?"
+              onConfirm={() => handleReject(record)}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button type="link" icon={<FaTimes />} danger />
+            </Popconfirm>
+          </Tooltip>
+          <Tooltip title="Approve Project">
+            <Button
+              type="link"
+              icon={<FaCheck />}
+              onClick={() => handleApprove(record)}
+            />
+          </Tooltip>
         </Space>
       ),
     },
   ];
 
+  const data: Project[] = [
+    {
+      key: "1",
+      projectName: "Project Alpha",
+      status: "In Progress",
+      deadline: "2024-12-31",
+      image: "https://i.ibb.co/jf4XKCz/img1.jpg",
+    },
+    {
+      key: "2",
+      projectName: "Project Beta",
+      status: "Not Started",
+      deadline: "2025-01-15",
+      image: "https://i.ibb.co/jf4XKCz/img1.jpg",
+    },
+  ];
+
+  const handleEdit = (record: Project) => {
+    console.log("Edit project:", record);
+  };
+
+  const handleApprove = (record: Project) => {
+    console.log("Approve project:", record);
+  };
+
+  const handleReject = (record: Project) => {
+    console.log("Reject project:", record);
+  };
+
   return (
-    <div>
-      {/* Page Header */}
-      <header className="text-center mb-6">
-        <h1 className="text-4xl font-bold text-gray-800">Project Management</h1>
-        <p className="text-lg text-gray-600">
-          Track and manage all your projects in one place
-        </p>
-      </header>
-
-      {/* Add Project Button */}
-      <div className="mb-4 text-right">
-        <button className="flex items-center gap-2 bg-blue-600 text-white px-5 py-3 rounded-lg shadow hover:bg-blue-700 transition">
-          <FaPlusCircle />
+    <div className="container mx-auto p-4">
+      {/* <h1 className="text-2xl font-bold text-center mb-6"> */}
+      <h1 className="text-4xl font-extrabold text-center  mb-6 text-gray-800">
+        Project Management
+      </h1>
+      <div className="flex justify-end mb-4">
+        <Button
+          type="primary"
+          icon={<FaPlus />}
+          onClick={() => setModalIsOpen(true)}
+          className="flex items-center"
+        >
           Add Project
-        </button>
+        </Button>
       </div>
-
-      {/* Search Field */}
-      <div className="mb-4">
-        <Input.Search
-          placeholder="Search by project name"
-          onSearch={handleSearch}
-          enterButton
-        />
-      </div>
-
-      {/* Project Table */}
-      <Table columns={columns} dataSource={filteredData} />
-
-      {/* Add Project Modal */}
-      <Modal
-        title="Add New Project"
-        visible={isModalVisible}
-        onCancel={handleCancel}
-        footer={null}
-      >
-        <div className="mb-4">
-          <Input
-            placeholder="Project Name"
-            value={newProject.name}
-            onChange={(e) =>
-              setNewProject({ ...newProject, name: e.target.value })
-            }
-            className="mb-4"
-          />
-          <Input
-            placeholder="Project Image URL"
-            value={newProject.image}
-            onChange={(e) =>
-              setNewProject({ ...newProject, image: e.target.value })
-            }
-            className="mb-4"
-          />
-          <Button
-            type="primary"
-            onClick={handleAddProject}
-            className="bg-green-500 text-white"
-          >
-            Add Project
-          </Button>
-        </div>
-      </Modal>
+      <Table
+        columns={columns}
+        dataSource={data}
+        pagination={false}
+        rowKey="key"
+      />
+      <CreateProjectModal
+        modalIsOpen={modalIsOpen}
+        setModalIsOpen={setModalIsOpen}
+      />
     </div>
   );
 };
 
-export default Page;
+export default ProjectManagementTable;
